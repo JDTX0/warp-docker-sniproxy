@@ -1,13 +1,10 @@
 #!/bin/bash
 
-if warp-cli --accept-tos status | grep -q Disconnected; then
-    warp-cli --accept-tos connect
-    sleep 2
-
-    # still disconnected
-    if warp-cli --accept-tos status | grep -q Disconnected; then
-        exit 1
-    fi
+if warp-cli --accept-tos status | grep -q Connected; then
+    exit 0
 fi
 
-exit 0
+warp-cli --accept-tos connect
+sleep 2
+
+exit 1

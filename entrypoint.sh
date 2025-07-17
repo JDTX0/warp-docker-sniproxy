@@ -35,13 +35,6 @@ fi
 # Connect
 warp-cli --accept-tos connect
 
-# disable qlog if DEBUG_ENABLE_QLOG is empty
-if [ -z "$DEBUG_ENABLE_QLOG" ]; then
-    warp-cli --accept-tos debug qlog disable
-else
-    warp-cli --accept-tos debug qlog enable
-fi
-
 if [[ -n "$WARP_ENABLE_SNIPROXY" ]]; then
     sniproxy -c /sniproxy.conf
 fi
