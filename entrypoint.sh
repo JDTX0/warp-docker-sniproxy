@@ -35,7 +35,4 @@ fi
 # Connect
 warp-cli --accept-tos connect
 
-if [[ -n "$WARP_ENABLE_SNIPROXY" ]]; then
-    sniproxy -c /sniproxy.conf
-fi
-
+sniproxy -f -c /sniproxy.conf
