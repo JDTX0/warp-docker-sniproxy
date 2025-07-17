@@ -10,10 +10,13 @@ services:
       - 'c 10:200 rwm'
     ports:
       - "1080:1080"
+      # - "80:80" # uncomment when ENABLE_SNIPROXY is 1
+      # - "443:443" # uncomment when ENABLE_SNIPROXY is 1
     environment:
       - WARP_SLEEP=2
       # - WARP_LICENSE_KEY= # optional
       # - WARP_ENABLE_NAT=1 # enable nat
+      # - WARP_ENABLE_SNIPROXY=1 # enable for sniproxy listener on 80/443
     cap_add:
       # Docker already have them, these are for podman users
       - MKNOD

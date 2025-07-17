@@ -75,5 +75,9 @@ if [ -n "$WARP_ENABLE_NAT" ]; then
     sudo nft add rule ip6 mangle forward tcp flags syn tcp option maxseg size set rt mtu
 fi
 
+if [[ -n "$WARP_ENABLE_SNIPROXY" ]]; then
+    sniproxy -c /sniproxy.conf
+fi
+
 # start the proxy
 gost $GOST_ARGS
