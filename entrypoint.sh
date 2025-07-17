@@ -33,7 +33,7 @@ else
 fi
 
 # Connect
-warp-cli connect
+warp-cli --accept-tos connect
 
 # disable qlog if DEBUG_ENABLE_QLOG is empty
 if [ -z "$DEBUG_ENABLE_QLOG" ]; then
