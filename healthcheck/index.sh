@@ -1,14 +1,11 @@
 #!/bin/bash
 
-# exit when any command fails
-set -e
-
-# get where the script is located
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-bash $DIR/connected-to-warp.sh
-
-# if BETA_FIX_HOST_CONNECTIVITY is set, run fix-host-connectivity.sh
-if [ -n "$BETA_FIX_HOST_CONNECTIVITY" ]; then
-    bash $DIR/fix-host-connectivity.sh
+if warp-cli --accept-tos status | grep -q Connected; then
+    echo "Healthcheck succeeded, Warp is connected"
+    exit 0
 fi
+
+warp-cli --accept-tos connect
+sleep 2
+
+exit 1
